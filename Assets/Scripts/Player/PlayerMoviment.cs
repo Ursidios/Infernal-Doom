@@ -10,18 +10,22 @@ public class PlayerMoviment : MonoBehaviour
     public float jumpForce;
     private Rigidbody2D rb;
     public bool isOnFloor;
+    private WeaponController weaponController;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Move();
+
+        weaponController = GetComponent<WeaponController>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
+        if(!weaponController.isAiming)
+            Move();
     }
     void Update()
     {
@@ -31,13 +35,13 @@ public class PlayerMoviment : MonoBehaviour
 
     public float GetXDirection()
     {
-        float x = Input.GetAxis("Horizontal");    
+        float x = Input.GetAxisRaw("Horizontal");    
 
         return x;
     }
     public float GetYDirection()
     {
-        float y = Input.GetAxis("Vertical");
+        float y = Input.GetAxisRaw("Vertical");
 
         return y;
     }
