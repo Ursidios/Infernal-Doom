@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: RuleTile Grass
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 21300000, guid: 1a613ae40f88c1246a916e1e005a8b51, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Id: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: 1a613ae40f88c1246a916e1e005a8b51, type: 3}
+    - {fileID: 21300000, guid: d0020ea99f91e0a4caf14213af9b3e46, type: 3}
+    - {fileID: 21300000, guid: 9e4b20602ed75804eb046eb0e73386d5, type: 3}
+    - {fileID: 21300000, guid: 41606779790afd949b41cf7bd475182c, type: 3}
+    - {fileID: 21300000, guid: df9e3b67efa88664eb68322520b172a9, type: 3}
+    m_GameObject: {fileID: 0}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.204
+    m_Output: 1
+    m_ColliderType: 0
+    m_RandomTransform: 2
+    m_Neighbors: 
+    m_NeighborPositions: []
+    m_RuleTransform: 0

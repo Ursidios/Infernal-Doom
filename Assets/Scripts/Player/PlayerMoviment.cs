@@ -8,14 +8,23 @@ public class PlayerMoviment : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
+    public Transform groundDetector;
     private Rigidbody2D rb;
+    public float gravityMultiplayer;
+    public float maxGravity;
+    private float initialGravity;
     public bool isOnFloor;
+    public bool isMoviment;
+    public LayerMask GroundLayer;
+    public float groundDetectorRadius;
     private WeaponController weaponController;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        initialGravity = rb.gravityScale;
+
         Move();
 
         weaponController = GetComponent<WeaponController>();
@@ -25,12 +34,35 @@ public class PlayerMoviment : MonoBehaviour
     void FixedUpdate()
     {
         if(!weaponController.isAiming)
+        {
             Move();
+            isMoviment = true;
+        }
+        else
+        {
+            isMoviment = false;
+        }
     }
     void Update()
     {
         if(Input.GetButtonDown("Jump"))
             Jump();
+        GroundDetector();
+        if(!isOnFloor)
+        {
+            rb.gravityScale += Time.deltaTime * gravityMultiplayer;
+
+            if(rb.gravityScale >= maxGravity)
+            {
+                rb.gravityScale = maxGravity;
+            }
+        }
+        else
+        {
+            rb.gravityScale = initialGravity;
+        }
+
+
     }
 
     public float GetXDirection()
@@ -48,30 +80,21 @@ public class PlayerMoviment : MonoBehaviour
 
     public void Move()
     {
-        rb.AddForce(Vector2.right * GetXDirection()  * speed, ForceMode2D.Force);
+        rb.velocity = new Vector2(GetXDirection()  * speed, rb.velocity.y);
     }
     
     public void Jump()
     {
         if(isOnFloor)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force) ;
+           // rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force) ;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    public void GroundDetector()
     {
-        Vector2 pontoDeContato = collision.contacts[0].point;
-
-        Vector2 posicaoDoObjeto = transform.position;
-
-        if (pontoDeContato.y < posicaoDoObjeto.y)
-        {
-           isOnFloor = true;
-        }
-    }
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        isOnFloor = false;
+        isOnFloor = Physics2D.OverlapCircle(groundDetector.position, groundDetectorRadius, GroundLayer);
     }
 }
