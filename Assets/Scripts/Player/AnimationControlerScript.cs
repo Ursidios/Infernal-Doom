@@ -28,6 +28,10 @@ public class AnimationControlerScript : MonoBehaviour
             }
 
         }
+        else
+        {
+            anim.SetBool("Run", false);
+        }
 
         if(playerMoviment.GetXDirection() > 0)
         {
@@ -39,6 +43,12 @@ public class AnimationControlerScript : MonoBehaviour
         }
 
         anim.SetBool("Jump", !playerMoviment.isOnFloor);
+        anim.SetFloat("Velocity", playerMoviment.rb.velocity.normalized.x);
         
+    }
+
+    public void PlayAnimation(string name)
+    {
+        anim.Play(name);
     }
 }

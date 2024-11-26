@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class WeaponController : MonoBehaviour
     public bool isAiming;
 
     public GameObject bullet;
+
+    public UnityEvent onShoot;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,5 +62,6 @@ public class WeaponController : MonoBehaviour
     public void Shoot()
     {
         Instantiate(bullet, aimObj.transform.position, aimObj.transform.rotation);
+        onShoot?.Invoke();
     }
 }

@@ -9,7 +9,7 @@ public class PlayerMoviment : MonoBehaviour
     public float speed;
     public float jumpForce;
     public Transform groundDetector;
-    private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     public float gravityMultiplayer;
     public float maxGravity;
     private float initialGravity;
@@ -40,6 +40,7 @@ public class PlayerMoviment : MonoBehaviour
         }
         else
         {
+            rb.velocity = new Vector2(0, 0);
             isMoviment = false;
         }
     }
