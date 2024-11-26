@@ -62,8 +62,11 @@ public class DemonLocomotionSystem : MonoBehaviour
         }
 
 
-
-        if(aIPath.velocity.x > 0)
+        if(aIPath.velocity.x == 0)
+        {
+            SpriteObj.flipX = SpriteObj.flipX;
+        }
+        else if(aIPath.velocity.x > 0)
         {
             SpriteObj.flipX = true;
         }

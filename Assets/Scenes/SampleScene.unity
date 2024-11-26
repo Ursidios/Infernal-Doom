@@ -337,7 +337,8 @@ GameObject:
   - component: {fileID: 314323413}
   - component: {fileID: 314323418}
   - component: {fileID: 314323419}
-  m_Layer: 0
+  - component: {fileID: 314323420}
+  m_Layer: 8
   m_Name: Demon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +431,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 3.1
-  endReachedDistance: 2.26
+  endReachedDistance: 3.1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -534,6 +535,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   normalState: 0
+--- !u!114 &314323420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314323412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6381738a9f8022548ba5475f920e2bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 10
+  damage: 2
+  circleEyeRadius: 3.1
+  circleOffset: {x: 0, y: 0}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  AtackCountDownMax: 2
+  anim: {fileID: 1093315488}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +974,7 @@ GameObject:
   - component: {fileID: 1093315486}
   - component: {fileID: 1093315487}
   - component: {fileID: 1093315488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Demon Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,6 +1113,7 @@ GameObject:
   - component: {fileID: 1153489102}
   - component: {fileID: 1153489103}
   - component: {fileID: 1153489104}
+  - component: {fileID: 1153489105}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1235,6 +1258,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.18}
   m_Size: {x: 0.98, y: 2.1}
   m_Direction: 0
+--- !u!114 &1153489105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153489097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81c383d48a9ceb4a9b0bd6b6b7ef12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
 --- !u!1 &1167911246
 GameObject:
   m_ObjectHideFlags: 0

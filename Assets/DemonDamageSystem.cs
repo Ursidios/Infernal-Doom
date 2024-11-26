@@ -2,43 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class DemonDamageSystem : MonoBehaviour
 {
-    public float speed;
-
-    public float lifeTime;
+    public int life;
     public int damage;
+
     public float circleEyeRadius = 2.0f;  // Raio do círculo de colisão
     public Vector2 circleOffset = Vector2.zero;  // Deslocamento do círculo em relação ao objeto
     public LayerMask playerMask;  // Máscara de camadas para verificar colisões
 
     private Collider2D[] hitPlayer;
-    // Start is called before the first frame update
-    void Start()
+
+    private float AtackCountDown;
+    public float AtackCountDownMax;
+    public Animator anim;
+
+
+    void Update()
     {
-        
+        DamageArea();
+
+        AtackCountDown -= Time.deltaTime;
+
+        if(AtackCountDown <= 0 && hitPlayer.Length > 0)
+        {
+            anim.Play("DemonAtack");
+            DoDamage();
+            AtackCountDown = AtackCountDownMax;
+        }
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    public void DamageArea()
     {
-        transform.Translate(speed,0,0);
-
-        lifeTime -= Time.deltaTime;
-
-        if(lifeTime <= 0)
-            Destroy(gameObject);
-
         Vector2 position = (Vector2)transform.position + circleOffset;
         hitPlayer = Physics2D.OverlapCircleAll(position, circleEyeRadius, playerMask);
+    }
+    public void DoDamage()
+    {
         foreach (Collider2D hitCollider in hitPlayer)
         {
             Debug.Log("Colidiu com: " + hitCollider.gameObject.name);
-            hitCollider.gameObject.GetComponent<DemonDamageSystem>().TakeDamage(damage);
-            Destroy(gameObject);
+            hitCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
         }
        
     }
+
+    public void TakeDamage(int Damage)
+    {
+        life -= Damage;
+    }
+
+
+
     void OnDrawGizmos()
     {
         // Define a cor do Gizmo
