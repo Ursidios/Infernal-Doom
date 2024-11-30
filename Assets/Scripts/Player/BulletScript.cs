@@ -11,6 +11,7 @@ public class BulletScript : MonoBehaviour
     public float circleEyeRadius = 2.0f;  // Raio do círculo de colisão
     public Vector2 circleOffset = Vector2.zero;  // Deslocamento do círculo em relação ao objeto
     public LayerMask playerMask;  // Máscara de camadas para verificar colisões
+    public LayerMask groundMask;  // Máscara de camadas para verificar colisões
 
     private Collider2D[] hitPlayer;
     // Start is called before the first frame update
@@ -34,10 +35,15 @@ public class BulletScript : MonoBehaviour
         foreach (Collider2D hitCollider in hitPlayer)
         {
             Debug.Log("Colidiu com: " + hitCollider.gameObject.name);
-            hitCollider.gameObject.GetComponent<DemonDamageSystem>().TakeDamage(damage);
+            hitCollider.gameObject.GetComponent<EnemyHealthmanager>().TakeDamage(damage);
             Destroy(gameObject);
         }
        
+        Collider2D[] hitDestroy = Physics2D.OverlapCircleAll(position, circleEyeRadius, groundMask);
+        foreach (Collider2D hitCollider in hitDestroy)
+        {
+            Destroy(gameObject);
+        }
     }
     void OnDrawGizmos()
     {

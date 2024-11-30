@@ -23,12 +23,19 @@ public class DemonLocomotionSystem : MonoBehaviour
     private Collider2D[] hitPlayer;
 
     public bool normalState;
+
+    private float timerToNextPoint;
+    public float timerToNextPointMax;
     // Start is called before the first frame update
     void Awake()
     {
         actualWayPoint = Random.Range(0, WayPoint.Length);
 
         aIDestinationSetter.target = WayPoint[actualWayPoint];
+
+        GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
+        
+        Player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -46,11 +53,16 @@ public class DemonLocomotionSystem : MonoBehaviour
         {
             if(normalState)
             {
+                timerToNextPoint -= Time.deltaTime;
                 if(aIPath.reachedEndOfPath)
                 {
                     if(!isPlayerVisible)
                     {
-                        ChangeWay();
+                        if(timerToNextPoint <= 0)
+                        {
+                            timerToNextPoint = timerToNextPointMax;
+                            ChangeWay();
+                        }
                     }
                 }
             }

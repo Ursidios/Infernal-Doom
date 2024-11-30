@@ -12,6 +12,8 @@ public class WeaponController : MonoBehaviour
     public bool isAiming;
 
     public GameObject bullet;
+    public GameObject bulletFireLight;
+    public GameObject bulletFireAudio;
 
     public UnityEvent onShoot;
     // Start is called before the first frame update
@@ -62,6 +64,11 @@ public class WeaponController : MonoBehaviour
     public void Shoot()
     {
         Instantiate(bullet, aimObj.transform.position, aimObj.transform.rotation);
-        onShoot?.Invoke();
+        Instantiate(bulletFireLight, aimObj.transform.position, aimObj.transform.rotation);
+        Instantiate(bulletFireAudio, aimObj.transform.position, aimObj.transform.rotation);
+        
+        if(playerMoviment.isOnFloor)
+            onShoot?.Invoke();
     }
+
 }

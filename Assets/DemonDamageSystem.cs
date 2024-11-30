@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DemonDamageSystem : MonoBehaviour
 {
-    public int life;
     public int damage;
 
     public float circleEyeRadius = 2.0f;  // Raio do círculo de colisão
@@ -44,11 +43,6 @@ public class DemonDamageSystem : MonoBehaviour
             hitCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
         }
        
-    }
-
-    public void TakeDamage(int Damage)
-    {
-        life -= Damage;
     }
 
 
