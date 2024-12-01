@@ -7,11 +7,13 @@ public class PowerUps : MonoBehaviour
     [Header ("NightVision")]
     public bool nightVision;
     public float timerToNextUseMax;
-    private float timerToNextUse;
+    [HideInInspector] public float timerToNextUse;
     public GameObject NightVisionLight;
     public bool visionOn;
+    public bool canUse;
     public float timeOfUseMax;
     private float timeOfUse;
+    public AudioSource nightVisionAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,7 @@ public class PowerUps : MonoBehaviour
             {
                 timeOfUse = timeOfUseMax;
                 visionOn = false;
+                canUse = false;
             }
         }
         else
@@ -46,9 +49,11 @@ public class PowerUps : MonoBehaviour
             timerToNextUse -= Time.deltaTime;       
             if(timerToNextUse <= 0)
             {
+                canUse = true;
                 if(Input.GetKeyDown(KeyCode.Tab))
                 {
                     visionOn = true;
+                    nightVisionAudio.Play();
                     timerToNextUse = timerToNextUseMax;
                 }
             }

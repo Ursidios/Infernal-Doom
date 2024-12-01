@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
     public int life;
     public AudioSource painAudio;
+
+    public Slider sliderLife;
+    public UnityEvent onDie;
+    void Awake()
+    {
+        sliderLife.maxValue = life;
+    }
     public void TakeDamage(int Damage)
     {
         life -= Damage;
@@ -18,10 +27,13 @@ public class HealthManager : MonoBehaviour
         {
             Die();
         }
+        sliderLife.value = life;
+       
     }
 
     public void Die()
     {
         Destroy(gameObject);
+        onDie?.Invoke();
     }
 }

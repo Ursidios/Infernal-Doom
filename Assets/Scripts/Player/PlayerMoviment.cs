@@ -32,7 +32,10 @@ public class PlayerMoviment : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    {        
+        if(OpenMenu.isMenuOpen)
+            return;
+            
         if(!weaponController.isAiming)
         {
             Move();
@@ -46,6 +49,9 @@ public class PlayerMoviment : MonoBehaviour
     }
     void Update()
     {
+        if(OpenMenu.isMenuOpen)
+            return;
+            
         if(Input.GetButtonDown("Jump"))
             Jump();
         GroundDetector();

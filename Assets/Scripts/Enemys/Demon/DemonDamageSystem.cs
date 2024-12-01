@@ -15,6 +15,7 @@ public class DemonDamageSystem : MonoBehaviour
     private float AtackCountDown;
     public float AtackCountDownMax;
     public Animator anim;
+    public AudioSource punchSound;
 
 
     void Update()
@@ -41,6 +42,7 @@ public class DemonDamageSystem : MonoBehaviour
         {
             Debug.Log("Colidiu com: " + hitCollider.gameObject.name);
             hitCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
+            punchSound.Play();
         }
        
     }

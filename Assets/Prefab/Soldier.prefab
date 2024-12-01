@@ -183,6 +183,7 @@ MonoBehaviour:
           m_StringArgument: SoldierShootAnimation
           m_BoolArgument: 0
         m_CallState: 2
+  fireLight: {fileID: 4156032570421556720, guid: 72f6f4a83c6e88e4d962dc124275749a, type: 3}
 --- !u!50 &2004501331282334002
 Rigidbody2D:
   serializedVersion: 4

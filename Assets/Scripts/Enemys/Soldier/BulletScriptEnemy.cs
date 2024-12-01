@@ -14,6 +14,7 @@ public class BulletScriptEnemy : MonoBehaviour
     public LayerMask groundMask;  // Máscara de camadas para verificar colisões
 
     private Collider2D[] hitPlayer;
+
     // Start is called before the first frame update
     void Start()
     {

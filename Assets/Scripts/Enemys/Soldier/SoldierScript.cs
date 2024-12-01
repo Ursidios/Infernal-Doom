@@ -23,6 +23,7 @@ public class SoldierScript : MonoBehaviour
     public Transform Player;
 
     public UnityEvent onShoot;
+    public GameObject fireLight;
 
     void Start()
     {
@@ -80,6 +81,7 @@ public class SoldierScript : MonoBehaviour
         if(timerBetweenBullets <= 0)
         {
             Instantiate(EnemyBullet, Aim.transform.position, Aim.transform.rotation);
+            Instantiate(fireLight, Aim.transform.position, Aim.transform.rotation);
             onShoot?.Invoke();
             timerBetweenBullets = timerBetweenBulletsMax;
         }

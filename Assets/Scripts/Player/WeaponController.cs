@@ -25,6 +25,9 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(OpenMenu.isMenuOpen)
+            return;
+            
         directionAim.x = playerMoviment.GetXDirection();
         directionAim.y = playerMoviment.GetYDirection();
 
