@@ -76,12 +76,14 @@ public class BossDamageSystem : MonoBehaviour
             Debug.Log("Colidiu com: " + hitCollider.gameObject.name);
             hitCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
         }
+
     }
 
 
 
     void OnDrawGizmos()
     {
+        
         // Define a cor do Gizmo
         Gizmos.color = Color.red;
 
