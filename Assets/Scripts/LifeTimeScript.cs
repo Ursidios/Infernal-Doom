@@ -6,6 +6,7 @@ public class LifeTimeScript : MonoBehaviour
 {
 
     public float Timer;
+    
 
     void Update()
     {
