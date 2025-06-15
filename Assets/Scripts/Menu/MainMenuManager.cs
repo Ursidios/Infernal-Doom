@@ -18,6 +18,10 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void StartFase2()
+    {
+        SceneManager.LoadScene(2);
+    }
 
     public void OpenTutorial()
     {
