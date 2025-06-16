@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
 {
     public int life;
     public AudioSource painAudio;
+    public AudioSource cureAudio;
 
     public Slider sliderLife;
     public UnityEvent onDie;
@@ -20,6 +21,11 @@ public class HealthManager : MonoBehaviour
         life -= Damage;
         painAudio.Play();
     }
+    public void Cure(int value)
+    {
+        life += value;
+        cureAudio.Play();
+    }
 
     public void Update()
     {
@@ -28,7 +34,6 @@ public class HealthManager : MonoBehaviour
             Die();
         }
         sliderLife.value = life;
-       
     }
 
     public void Die()

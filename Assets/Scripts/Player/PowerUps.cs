@@ -9,6 +9,7 @@ public class PowerUps : MonoBehaviour
     public float timerToNextUseMax;
     [HideInInspector] public float timerToNextUse;
     public GameObject NightVisionLight;
+    public GameObject GlobalLight;
     public bool visionOn;
     public bool canUse;
     public float timeOfUseMax;
@@ -33,6 +34,7 @@ public class PowerUps : MonoBehaviour
     public void NightVision()
     {
         NightVisionLight.SetActive(visionOn); 
+        GlobalLight.SetActive(!visionOn); 
 
         if(visionOn)
         {

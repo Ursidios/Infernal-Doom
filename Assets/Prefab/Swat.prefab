@@ -284,7 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d410b65e08aa1484084b51b96ffe0829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 15
+  life: 7
+  useSlider: 0
+  sliderVida: {fileID: 0}
 --- !u!82 &4152615188704604937
 AudioSource:
   m_ObjectHideFlags: 0
